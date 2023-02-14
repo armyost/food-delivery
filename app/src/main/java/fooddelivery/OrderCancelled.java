@@ -1,10 +1,10 @@
 package fooddelivery;
 
-public class 주문취소됨 extends AbstractEvent {
+public class OrderCancelled extends AbstractEvent {
 
     private Long id;
 
-    public 주문취소됨(){
+    public OrderCancelled(){
         super();
     }
 

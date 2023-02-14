@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
  @RestController
- public class 주문Controller {
-
+ public class OrderController {
+    @Autowired
+    OrderRepository orderRepository;
  }
