@@ -25,12 +25,23 @@
 
 ■ Microservice Orchestration
 1. Deploy to EKS Cluster
+- EKS에 Pod 배포한 상태입니다. 마이크로서비스 4개, kafka는 별도의 namespace에 생성하였습니다.
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/kubernetes-pods.PNG)
+
 
 2. Gateway & Service Router 설치
+- AWS LoadBalancer를 이용해 서비스를 외부에 노출합니다. 그리고 Service 리소스들을 생성합니다.
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/gateway%2Crouter.PNG)
+
 
 3. Autoscale (HPA)
+- Seige로 부하를 주기 전 리소스 사용현황입니다.
 ![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/loadstart.PNG)
+
+- Seige로 부하를 주면서 리소스 부하가 400%이상으로 치솟습니다. 이에 따라 AutoScaling이 발동합니다.
 ![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/loadmax.PNG)
+
+- 추가로 2개의 app Pod가 추가됨을 알 수 있습니다.끝.
 ![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/podincrease.PNG)
 
 -------------------------------------------------------------------------------------------------------------
