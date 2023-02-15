@@ -29,7 +29,9 @@
 2. Gateway & Service Router 설치
 
 3. Autoscale (HPA)
-![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/Order-delete.PNG)
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/loadstart.PNG)
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/loadmax.PNG)
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/podincrease.PNG)
 
 -------------------------------------------------------------------------------------------------------------
 
