@@ -1,5 +1,5 @@
 #!/bin/bash
-
+version=1
 
 echo "!!! delete app !!!"
 kubectl delete deployment app
@@ -27,23 +27,23 @@ mvn package -B -DskipTests
 echo "!!! docker packaing !!!"
 
 cd /workspace/food-delivery/app
-docker build -t armyost/app:v230214 .
+docker build -t armyost/app:v$version .
 
 cd /workspace/food-delivery/pay
-docker build -t armyost/pay:v230214 .
+docker build -t armyost/pay:v$version .
 
 cd /workspace/food-delivery/store
-docker build -t armyost/store:v230214 .
+docker build -t armyost/store:v$version .
 
 cd /workspace/food-delivery/gateway
-docker build -t armyost/gateway:v230215 .
+docker build -t armyost/gateway:v$version .
 
 echo "!!! docker push !!!"
 
-docker push armyost/app:v230214
-docker push armyost/pay:v230214
-docker push armyost/store:v230214
-docker push armyost/gateway:v230215
+docker push armyost/app:v$version
+docker push armyost/pay:v$version
+docker push armyost/store:v$version
+docker push armyost/gateway:v$version
 
 
 

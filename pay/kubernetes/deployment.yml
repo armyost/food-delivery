@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: pay
-          image: armyost/pay:v230214
+          image: armyost/pay:v1
           ports:
             - containerPort: 8080
           readinessProbe:
