@@ -1,5 +1,5 @@
 #!/bin/bash
-version=20
+version=21
 
 echo "!!! delete app !!!"
 kubectl delete deployment app
