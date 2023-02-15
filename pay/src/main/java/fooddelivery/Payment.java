@@ -17,13 +17,16 @@ public class Payment {
     private String orderId;
     private Double price;
     private String action;
+    private String address;
+    private String item;
 
     @PrePersist
     public void onPrePersist(){
 
-        if("취소".equals(action)){
+        if("cancel".equals(action)){
             PaymentCancelled paymentCancelled = new PaymentCancelled();
             BeanUtils.copyProperties(this, paymentCancelled);
+            paymentCancelled.setOrderId(orderId);
             paymentCancelled.publish();
 
         }else{
@@ -79,5 +82,23 @@ public class Payment {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    
+    //jpkim 추가
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
     }
 }

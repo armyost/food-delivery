@@ -13,7 +13,7 @@ public class OrderProcessing {
     private Long id;
     Long orderId;
     String address;
-    String foodId;
+    String item;
 
     @PostPersist
     public void onPostPersist(){
@@ -29,6 +29,19 @@ public class OrderProcessing {
     public void onPrePersist(){
         CouponGenerated couponGenerated = new CouponGenerated();
         BeanUtils.copyProperties(this, couponGenerated);
+
+        //jpkim 추가
+        // System.out.println("## OrderProcessing.java ## Long.valueOf(getId()"+Long.valueOf(getId()));
+        // System.out.println("## OrderProcessing.java ## Long.valueOf(getOrderId())"+Long.valueOf(getOrderId()));
+        System.out.println("## OrderProcessing.java ## String.valueOf(getItem()"+String.valueOf(getItem()));
+        System.out.println("## OrderProcessing.java ## String.valueOf(getAddress())"+String.valueOf(getAddress()));
+        //jpkim 추가
+
+
+        couponGenerated.setItem(getItem());
+        couponGenerated.setAddress(getAddress());
+        //jpkim 추가
+        
         couponGenerated.publish();
 
 
@@ -59,11 +72,11 @@ public class OrderProcessing {
         this.address = address;
     }
 
-    public String getFoodId() {
-        return foodId;
+    public String getItem() {
+        return item;
     }
 
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
+    public void setItem(String item) {
+        this.item = item;
     }
 }

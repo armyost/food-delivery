@@ -22,7 +22,7 @@ public class PolicyHandler{
 
             Payment payment = new Payment();
 
-            payment.setAction("취소");
+            payment.setAction("cancel");
 
             paymentRepository.save(payment);
         }

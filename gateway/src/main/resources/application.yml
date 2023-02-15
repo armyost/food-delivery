@@ -58,7 +58,7 @@ spring:
         - id: customer
           uri: http://customer:8080
           predicates:
-            - Path= 
+            - Path=/orderStatuses/**, /searches/**
       globalcors:
         corsConfigurations:
           '[/**]':

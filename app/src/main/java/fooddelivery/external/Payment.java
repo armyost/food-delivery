@@ -5,6 +5,9 @@ public class Payment {
     private Long id;
     private String orderId;
     private Double price;
+    private String item;
+    private String address;
+    
 
 
     public Long getId() {
@@ -28,6 +31,22 @@ public class Payment {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+   
 
 }
 

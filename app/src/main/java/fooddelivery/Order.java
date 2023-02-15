@@ -3,6 +3,8 @@ package fooddelivery;
 import javax.persistence.*;
 import org.springframework.beans.BeanUtils;
 
+
+
 @Entity
 @Table(name="Order_table")
 public class Order {
@@ -10,11 +12,12 @@ public class Order {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String foodId;
+    private String item;
     private Integer qty;
     private String status;
     private String storeId;
     private Long price;
+    private String address;
 
     @PostPersist
     public void onPostPersist(){
@@ -24,17 +27,48 @@ public class Order {
 
         fooddelivery.external.Payment payment = new fooddelivery.external.Payment();
 
+        
+        //jpkim 추가
+        System.out.println("## Order.java ## String.valueOf(getId()"+String.valueOf(getId()));
+        System.out.println("## Order.java ## Double.valueOf(getPrice()"+Double.valueOf(getPrice()));
+        System.out.println("## Order.java ## String.valueOf(getItem())"+String.valueOf(getItem()));
+        System.out.println("## Order.java ## Integer.valueOf(getQty())"+Integer.valueOf(getQty()));
+        System.out.println("## Order.java ## String.valueOf(getAddress())"+String.valueOf(getAddress()));
+   
+        //jpkim 추가
+
+
         // this is Context Mapping (Anti-corruption Layer)
         payment.setOrderId(String.valueOf(getId()));
         if(getPrice()!=null)
             payment.setPrice(Double.valueOf(getPrice()));
+            
+
+        // jpkim 추가
+        
+        if(getItem()!=null)
+            payment.setItem(String.valueOf(getItem()));
+
+        if(getAddress()!=null)
+            payment.setAddress(String.valueOf(getAddress()));
+
+        // jpkim 추가
 
         Application.applicationContext.getBean(fooddelivery.external.PaymentService.class)
                 .pay(payment);
 
 
+        
     }
-
+    //jpkim 추가
+    @PostUpdate
+    public void onPostUpdate(){
+        OrderCancelled orderCancelled = new OrderCancelled();
+        orderCancelled.setOrderId(String.valueOf(getId()));
+        orderCancelled.publish();
+   
+    }
+    //jpkim 추가
 
 
     public Long getId() {
@@ -45,11 +79,11 @@ public class Order {
         this.id = id;
     }
     public String getItem() {
-        return foodId;
+        return item;
     }
 
-    public void setItem(String foodId) {
-        this.foodId = foodId;
+    public void setItem(String item) {
+        this.item = item;
     }
     public Integer getQty() {
         return qty;
@@ -82,4 +116,15 @@ public class Order {
     public void setPrice(Long price) {
         this.price = price;
     }
+    
+
+    //jpkim 추가
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    //jpkim 추가
 }

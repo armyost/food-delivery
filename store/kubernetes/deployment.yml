@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: store
-          image: armyost/store:v1
+          image: armyost/store:v20
           ports:
             - containerPort: 8080
           readinessProbe:

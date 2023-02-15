@@ -8,6 +8,8 @@ public class Paid extends AbstractEvent {
     private Long id;
     private String orderId;
     private Double price;
+    private String address;
+    private String item;
 
     public Long getId() {
         return id;
@@ -29,6 +31,22 @@ public class Paid extends AbstractEvent {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+    //jpkim 추가
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
     }
 
 
