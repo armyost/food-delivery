@@ -1,3 +1,38 @@
+# 620255 전략기술팀 김종포 책임
+
+# 과제 설명
+■ 대상 마이크로서비스 : 고객, 상점주, 라이더
+■ Microservice Implementation
+1. Saga (Pub / Sub)
+2. CQRS
+3. Compensation / Correlation
+■ Microservice Orchestration
+1. Deploy to EKS Cluster
+2. Gateway & Service Router 설치
+3. Autoscale (HPA)
+
+# 과제 제출
+
+■ 대상 마이크로서비스 : app, store(delivery포함), pay, customer
+1. Saga
+
+
+2. CQRS
+
+
+3. Compensation / Correlation
+
+
+■ Microservice Orchestration
+1. Deploy to EKS Cluster
+
+2. Gateway & Service Router 설치
+
+3. Autoscale (HPA)
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/Order-delete.PNG)
+
+-------------------------------------------------------------------------------------------------------------
+
 ![image](https://user-images.githubusercontent.com/487999/79708354-29074a80-82fa-11ea-80df-0db3962fb453.png)
 
 # 예제 - 음식배달 (리포트)
