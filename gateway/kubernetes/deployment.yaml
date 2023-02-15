@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: armyost/gateway:v21
+          image: armyost/gateway:v25
           ports:
             - containerPort: 8080

@@ -61,13 +61,19 @@ public class Order {
         
     }
     //jpkim 추가
-    @PostUpdate
+    @PostRemove
     public void onPostUpdate(){
         OrderCancelled orderCancelled = new OrderCancelled();
         orderCancelled.setOrderId(String.valueOf(getId()));
         orderCancelled.publish();
    
     }
+
+    @PreUpdate
+    public void onPreUpdate(){
+    }
+
+
     //jpkim 추가
 
 
