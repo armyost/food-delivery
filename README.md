@@ -14,14 +14,36 @@
 # 과제 제출
 
 ■ 대상 마이크로서비스 : app, store(delivery포함), pay, customer
-1. Saga
+- 구현 대상입니다.
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/ddd.PNG)
 
+1. Saga
+- Rollback에 대한 원자성을 검증하기 위한 SAGA 패턴 구현입니다.
+
+- 주문(Order)를 발행한 후에 주문을 취소하는 과정입니다. JPA리스너 중 postRemove가 발생했을때 반응토록 구현하였습니다.
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/postremove.PNG)
+
+- HTTP DELETE 메서드를 이용해 생성되어있는 .../orders/1 을 삭제합니다.
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/postman_delete.PNG)
+
+- kafka 메시지를 보면 알 수 있듯이 Cancel 프로세스(SAGA)가 진행중입니다.
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/Order-delete.PNG)
+
+- 결재(Payment)도 취소되었습니다. 
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/paymentcancel.PNG)
+
+※ 시간이 촉박하여 개발이 일부 미진한 부분이 있으니 양해바랍니다.
 
 2. CQRS
-
+- 주문에 대한 진행상황이 표시되고 있음. 현재 DeliveryStarted 상태로 표시됨
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/statechange.PNG)
 
 3. Compensation / Correlation
+- 주문을 생성
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/ordercreate.PNG)
 
+- 접수된 주문이 Message Queue를 통해 각 모듈에 전파되는 과정
+![image](https://github.com/armyost/food-delivery/blob/master/%EC%97%85%EB%A1%9C%EB%93%9C/orderaccept.PNG)
 
 ■ Microservice Orchestration
 1. Deploy to EKS Cluster
