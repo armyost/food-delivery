@@ -22,15 +22,15 @@ public class Order {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        fooddelivery.external.Payment Payment = new fooddelivery.external.Payment();
+        fooddelivery.external.Payment payment = new fooddelivery.external.Payment();
 
         // this is Context Mapping (Anti-corruption Layer)
-        Payment.setOrderId(String.valueOf(getId()));
+        payment.setOrderId(String.valueOf(getId()));
         if(getPrice()!=null)
-            Payment.setPrice(Double.valueOf(getPrice()));
+            payment.setPrice(Double.valueOf(getPrice()));
 
         Application.applicationContext.getBean(fooddelivery.external.PaymentService.class)
-                .pay(Payment);
+                .pay(payment);
 
 
     }

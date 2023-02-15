@@ -1,12 +1,15 @@
 package fooddelivery;
 
-
 public class DeliveryStarted extends AbstractEvent {
 
     private Long id;
     private String foodId;
     private String address;
     private String orderId;
+
+    public DeliveryStarted(){
+        super();
+    }
 
     public Long getId() {
         return id;

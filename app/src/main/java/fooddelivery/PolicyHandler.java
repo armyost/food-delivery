@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class PolicyHandler{
 
     @Autowired
-    OrderRepository OrderRepository;
+    OrderRepository orderRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverDeliveryStarted_ChangeStatus(@Payload DeliveryStarted deliveryStarted){
@@ -29,9 +29,9 @@ public class PolicyHandler{
             System.out.println("DeliveryStarted orderId = " + deliveryStarted.getOrderId());
 
             // Correlation id 는 'orderId' 임
-            OrderRepository.findById(Long.valueOf(deliveryStarted.getOrderId())).ifPresent((Order)->{
-               Order.setStatus("DeliveryStarted");
-               OrderRepository.save(Order);
+            orderRepository.findById(Long.valueOf(deliveryStarted.getOrderId())).ifPresent((order)->{
+               order.setStatus("DeliveryStarted");
+               orderRepository.save(order);
             });
 
         }

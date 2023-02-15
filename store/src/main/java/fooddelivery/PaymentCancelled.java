@@ -1,7 +1,7 @@
 package fooddelivery;
 
 
-public class 결제취소됨 extends AbstractEvent {
+public class PaymentCancelled extends AbstractEvent {
 
     private Long id;
     private Long orderId;

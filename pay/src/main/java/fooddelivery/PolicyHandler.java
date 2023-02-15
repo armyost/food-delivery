@@ -12,19 +12,19 @@ import org.springframework.stereotype.Service;
 public class PolicyHandler{
 
 
-    @Autowired 결제이력Repository 결제이력Repository;
+    @Autowired PaymentRepository paymentRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenever주문취소됨_결재취소함(@Payload 주문취소됨 주문취소됨){
+    public void wheneverOrderCancelled_CancelPayment(@Payload OrderCancelled orderCancelled){
 
-        if(주문취소됨.isMe()){
-            System.out.println("##### listener 결재취소함 : " + 주문취소됨.toJson());
+        if(orderCancelled.isMe()){
+            System.out.println("##### listener CancelPayment : " + orderCancelled.toJson());
 
-            결제이력 결제이력 = new 결제이력();
+            Payment payment = new Payment();
 
-            결제이력.set행위("취소");
+            payment.setAction("취소");
 
-            결제이력Repository.save(결제이력);
+            paymentRepository.save(payment);
         }
     }
 

@@ -10,6 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
  @RestController
- public class 주문관리Controller {
+ public class OrderProcessingController {
 
  }

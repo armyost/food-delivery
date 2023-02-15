@@ -17,18 +17,18 @@ public class OrderPlaced extends AbstractEvent {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getfoodId() {
+    public String getFoodId() {
         return foodId;
     }
 
-    public void setfoodId(String foodId) {
+    public void setFoodId(String foodId) {
         this.foodId = foodId;
     }
-    public Integer getqty() {
+    public Integer getQty() {
         return qty;
     }
 
-    public void setqty(Integer qty) {
+    public void setQty(Integer qty) {
         this.qty = qty;
     }
 }

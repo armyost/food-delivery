@@ -3,11 +3,11 @@ package fooddelivery;
 
 import javax.persistence.PrePersist;
 
-public class 결제승인됨 extends AbstractEvent {
+public class Paid extends AbstractEvent {
 
     private Long id;
     private String orderId;
-    private Double 금액;
+    private Double price;
 
     public Long getId() {
         return id;
@@ -23,12 +23,12 @@ public class 결제승인됨 extends AbstractEvent {
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
-    public Double get금액() {
-        return 금액;
+    public Double getPrice() {
+        return price;
     }
 
-    public void set금액(Double 금액) {
-        this.금액 = 금액;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
 
